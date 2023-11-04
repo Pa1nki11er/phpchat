@@ -15,6 +15,7 @@ $res = $connect->query("SELECT * from todos");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta:httpequiv>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <title>To-Do-list</title>
 </head>
 <body>
@@ -31,11 +32,10 @@ $res = $connect->query("SELECT * from todos");
             <?php
             while($row = $res->fetch(PDO::FETCH_ASSOC))
             {?>
-            <div class="todo-item">
-                <input type="checkbox" name="checked" <?php if ($row['checked']=="on") {?> 
-                    checked value="1" > 
-                <?php } ?> 
-                <h2> <?php echo $row['title'] ?></h2>
+            <div class="todo-item" id="todo-item">
+                <input id="checkbox" type="checkbox" name="checked" >  
+                 
+                <h2 id="task" class="task"> <?php echo $row['title'] ?></h2>
                 <br>
                 <small>created: <?php echo $row['date_time'] ?> </small>
             </div>
@@ -45,6 +45,7 @@ $res = $connect->query("SELECT * from todos");
         </div>
         </form>
     </div>
-
+    <script src="js/checkbox.js"></script>
+    
 </body>
 </html>

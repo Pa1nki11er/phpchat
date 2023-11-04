@@ -7,9 +7,9 @@
         var_dump($checked);
 
         if (!empty($title)) {
-            $savedb = $connect->prepare("INSERT INTO todos (title, checked) VALUES (:title, :checked)");
+            $savedb = $connect->prepare("INSERT INTO todos (title) VALUES (:title)");
             $savedb->bindParam(':title', $title, PDO::PARAM_STR);
-            $savedb->bindParam(':checked', $checked, PDO::PARAM_STR);
+            //$savedb->bindParam(':checked', $checked, PDO::PARAM_STR);
 
             if ($savedb->execute()) {
                 echo "Запись успешно добавлена в базу данных.";
