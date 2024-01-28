@@ -1,12 +1,17 @@
-<?php 
-$db_name = "to_do_list";
+<?php
+//require 'function.php';
 
-try{
-    $connect = new PDO('mysql:host=localhost;dbname='.$db_name.'','root', '');
-    $connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    //sql_create();
+    //$connect = new PDO('mysql:host=localhost;dbname='.$db_name.'','root', '');
+    //$connect->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     //echo "connected";
-}
-catch(PDOException $e){
-    echo 'ERROR '. $e->getMessage();
-}
+    $connect = new mysqli ("localhost","root","","to_do_list");
+
+if (!$connect) {
+    echo"connected";
+    exit();
+  }
+
+  
 ?>

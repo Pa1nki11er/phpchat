@@ -2,6 +2,7 @@
 require 'connectdb.php';
 $select = 'SELECT * from todos';
 $res = $connect->query("SELECT * from todos");
+//var_dump($res->fetch_object());
 
 
 //echo $row['id'], $row['title'], , $row['checked'];
@@ -31,19 +32,23 @@ $res = $connect->query("SELECT * from todos");
         <div class="show-todo-section">
 
             <?php
-            while($row = $res->fetch(PDO::FETCH_ASSOC))
+            while($row = $res->fetch_object())
             {?>
             <div class="todo-item" id="todo-item">
                 <input id="checkbox" type="checkbox" name="checked" <?php
-                if ($row["checked"] == "1")
+                if ($row->checked == "1")
                 {
-                    echo "checked";
+                 echo "checked";    
                 }
                 ?> >  
                  
-                <h2 id="task" class="task"> <?php echo $row['title'] ?></h2>
+                <h2 id="task" class="task" <?php  if ($row->checked == "1")
+                {
+                 echo "style='text-decoration:line-through;'";    
+                }?>> <?php echo $row->title ?></h2>
+                <img src="img/6861362.png" alt="" class="imgDel" id="imgDel">
                 <br>
-                <small>created: <?php echo $row['date_time'] ?> </small>
+                <small>created: <?php echo $row->date_time ?> </small>
             </div>
             
             <?php } ?>

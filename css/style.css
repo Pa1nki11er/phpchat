@@ -135,3 +135,9 @@ body{
     text-align: center;
     color: #cccc;
 }
+.imgDel
+{
+    width: 20px;
+    height: 20px;
+    float: right;
+}
